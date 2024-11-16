@@ -1,0 +1,58 @@
+2024-11-16 03:53:08+0000 [-] Loading buildbot.tac...
+2024-11-16 03:53:09+0000 [-] Loaded.
+2024-11-16 03:53:09+0000 [-] twistd 22.1.0 (/usr/bin/python3 3.10.12) starting up.
+2024-11-16 03:53:09+0000 [-] reactor class: twisted.internet.epollreactor.EPollReactor.
+2024-11-16 03:53:09+0000 [-] Starting BuildMaster -- buildbot.version: 3.4.0-1build1
+2024-11-16 03:53:09+0000 [-] Loading configuration from '/home/exouser/buildbot/test-master/master.cfg'
+2024-11-16 03:53:09+0000 [-] /usr/lib/python3/dist-packages/buildbot/config.py:386: buildbot.warnings.ConfigWarning: `buildbotNetUsageData` is not configured and defaults to basic.
+	This parameter helps the buildbot development team to understand the installation base.
+	No personal information is collected.
+	Only installation software version info and plugin usage is sent.
+	You can `opt-out` by setting this variable to None.
+	Or `opt-in` for more information by setting it to "full".
+	
+2024-11-16 03:53:09+0000 [-] Setting up database with URL 'sqlite:/state.sqlite'
+2024-11-16 03:53:09+0000 [-] setting database journal mode to 'wal'
+2024-11-16 03:53:09+0000 [-] adding 1 new change_sources, removing 0
+2024-11-16 03:53:09+0000 [-] gitpoller: using workdir '/home/exouser/buildbot/test-master/gitpoller-workdir'
+2024-11-16 03:53:09+0000 [-] adding 1 new builders, removing 0
+2024-11-16 03:53:09+0000 [-] adding 2 new schedulers, removing 0
+2024-11-16 03:53:09+0000 [-] No web server configured on this master
+2024-11-16 03:53:09+0000 [-] adding 1 new workers, removing 0
+2024-11-16 03:53:09+0000 [-] PBServerFactory starting on 9989
+2024-11-16 03:53:09+0000 [-] Starting factory <twisted.spread.pb.PBServerFactory object at 0x7fc6984bb100>
+2024-11-16 03:53:09+0000 [-] BuildMaster is running
+2024-11-16 03:53:09+0000 [-] buildbotNetUsageData: sending {'installid': '2c10d6bc43532eb5936697ebe846b7f768923f01', 'versions': {'Python': '3.10.12', 'Buildbot': '3.4.0-1build1', 'Twisted': '22.1.0'}, 'platform': {'platform': 'Linux-6.8.0-45-generic-x86_64-with-glibc2.35', 'system': 'Linux', 'machine': 'x86_64', 'processor': 'x86_64', 'python_implementation': 'CPython', 'version': '#45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed', 'distro': 'ubuntu:22.04'}, 'plugins': {'buildbot/worker/base/Worker': 1, 'buildbot/config/BuilderConfig': 1, 'buildbot/schedulers/basic/SingleBranchScheduler': 1, 'buildbot/schedulers/forcesched/ForceScheduler': 1, 'buildbot/changes/gitpoller/GitPoller': 1, 'buildbot/steps/source/git/Git': 1, 'buildbot/steps/shell/ShellCommand': 1}, 'db': 'sqlite', 'mq': 'simple', 'www_plugins': []}
+2024-11-16 03:53:09+0000 [-] buildbotNetUsageData: buildbot.net said: ok
+2024-11-16 04:00:23+0000 [-] <buildbot.changes.gitpoller.GitPoller object at 0x7fc698fcac20>: while polling for changes
+	Traceback (most recent call last):
+	  File "/usr/lib/python3/dist-packages/twisted/internet/defer.py", line 700, in errback
+	    self._startRunCallbacks(fail)
+	  File "/usr/lib/python3/dist-packages/twisted/internet/defer.py", line 763, in _startRunCallbacks
+	    self._runCallbacks()
+	  File "/usr/lib/python3/dist-packages/twisted/internet/defer.py", line 857, in _runCallbacks
+	    current.result = callback(  # type: ignore[misc]
+	  File "/usr/lib/python3/dist-packages/twisted/internet/defer.py", line 1750, in gotResult
+	    current_context.run(_inlineCallbacks, r, gen, status)
+	--- <exception caught here> ---
+	  File "/usr/lib/python3/dist-packages/twisted/internet/defer.py", line 1656, in _inlineCallbacks
+	    result = current_context.run(
+	  File "/usr/lib/python3/dist-packages/twisted/python/failure.py", line 489, in throwExceptionIntoGenerator
+	    return g.throw(self.type, self.value, self.tb)
+	  File "/usr/lib/python3/dist-packages/buildbot/changes/gitpoller.py", line 230, in poll
+	    remote_refs = yield self._getBranches()
+	  File "/usr/lib/python3/dist-packages/twisted/internet/defer.py", line 1656, in _inlineCallbacks
+	    result = current_context.run(
+	  File "/usr/lib/python3/dist-packages/twisted/python/failure.py", line 489, in throwExceptionIntoGenerator
+	    return g.throw(self.type, self.value, self.tb)
+	  File "/usr/lib/python3/dist-packages/buildbot/changes/gitpoller.py", line 453, in _dovccmd
+	    stdout = yield self._dovccmdImpl(command, args, path, None)
+	  File "/usr/lib/python3/dist-packages/twisted/internet/defer.py", line 1660, in _inlineCallbacks
+	    result = current_context.run(gen.send, result)
+	  File "/usr/lib/python3/dist-packages/buildbot/changes/gitpoller.py", line 483, in _dovccmdImpl
+	    raise GitError('command {} in {} on repourl {} failed with exit code {}: {}'.format(
+	buildbot.changes.gitpoller.GitError: command ['ls-remote', '--refs', 'git://github.com/buildbot/hello-world.git'] in None on repourl git://github.com/buildbot/hello-world.git failed with exit code 128: fatal: unable to connect to github.com:
+	github.com[0: 140.82.113.4]: errno=Connection timed out
+	
+	
+	
