@@ -22,6 +22,7 @@ import './views/BuilderView/BuilderView';
 import './views/BuildRequestView/BuildRequestView';
 import './views/BuildView/BuildView';
 import './views/PendingBuildRequestsView/PendingBuildRequestsView';
+import './views/Config/config';
 import './views/ChangesView/ChangesView';
 import './views/ChangeBuildsView/ChangeBuildsView';
 import './views/LogView/LogView';

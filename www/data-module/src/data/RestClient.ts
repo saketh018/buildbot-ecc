@@ -93,7 +93,7 @@ export class RestClient {
   rootUrl: string;
 
   constructor(rootUrl: string) {
-    this.rootUrl = rootUrl;
+    this.rootUrl = 'http://149.165.154.180:8010/api/v2/';
     if (!this.rootUrl.endsWith("/")) {
       this.rootUrl += "/";
     }
