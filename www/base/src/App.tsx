@@ -25,6 +25,7 @@ import './views/PendingBuildRequestsView/PendingBuildRequestsView';
 import './views/Config/config';
 import './views/ChangesView/ChangesView';
 import './views/ChangeBuildsView/ChangeBuildsView';
+import './views/EditWorker/editWorker';
 import './views/LogView/LogView';
 import './views/MastersView/MastersView';
 import './views/ProjectView/ProjectView';

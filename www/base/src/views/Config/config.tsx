@@ -19,8 +19,11 @@ import {observer} from "mobx-react";
 import {Card} from "react-bootstrap";
 import {buildbotSetupPlugin} from "buildbot-plugin-support";
 import {useState} from "react";
+import { RestClient } from "buildbot-data-js";
 
 export const AboutView = observer(() => {
+  const restClient = new RestClient('http://149.165.154.180:8010/api/v2/');
+  const endpoint = "master/config"; 
 
   const SimpleForm = () => {
     const [formData, setFormData] = useState({
@@ -36,10 +39,26 @@ export const AboutView = observer(() => {
      const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
     };
-  
-    const handleSubmit = (e:any) => {
+
+    const handleSubmit = async (e: any) => {
       e.preventDefault();
-      console.log('Form submitted:', formData);
+  
+      const payload = {
+        jsonrpc: "2.0",
+        method: "updateMasterConfig",
+        params: formData,
+        id: 1
+      };
+  
+      try {
+        console.log("Submitting payload:", payload);
+        const response = await restClient.post(endpoint, payload);
+        console.log("Response from server:", response);
+        alert("Configuration updated successfully!");
+      } catch (error) {
+        console.error("Error updating configuration:", error);
+        alert("Failed to update configuration. Please try again.");
+      }
     };
   
     return (
